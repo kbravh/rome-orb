@@ -1,0 +1,13 @@
+description: >
+  Linting a yarn project with Rome and applying suggested changes.
+usage:
+  version: 2.1
+  orbs:
+    rome: kbravh/rome-check@dev:alpha
+  jobs:
+    lint:
+      executor: node/default
+      steps:
+        - rome/check:
+            pkg-manager: yarn
+            level: --apply

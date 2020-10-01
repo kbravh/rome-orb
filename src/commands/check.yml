@@ -1,0 +1,41 @@
+description: >
+  Runs rome check command. https://romefrontend.dev/#rome-check
+parameters:
+  app-dir:
+    type: string
+    default: ~/project
+    description: >
+      Path to the directory containing your package.json file. Not needed if
+      package.json lives in the root.
+  pkg-manager:
+    type: enum
+    enum: ["npm", "yarn"]
+    default: "npm"
+    description: >
+      The package manager to use to install the project dependencies.
+  paths:
+    type: string
+    default: ''
+    description: >
+      The files or directories to check, if you don't want to check the entire project.
+  level:
+    type: enum
+    enum: ["","--apply", "--format-only"]
+    default: ""
+    description: >
+      Level of correction applied by the check command - --apply will apply
+      safe fixes and formatting, while --format-only will only apply formatting. 
+      Not passing a level will cause the job to fail upon finding any errors.
+  options:
+    type: string
+    default: ""
+    description: >
+      Other options to pass to the Rome check command. https://romefrontend.dev/#global-flags
+steps:
+  - checkout
+  - node/install-packages:
+      pkg-manager: << parameters.pkg-manager >>
+      app-dir: << parameters.app-dir >>
+  - run: 
+      working-directory: << parameters.app-dir >>
+      command: npx rome check << parameters.paths >> << parameters.level >> << parameters.options >>
