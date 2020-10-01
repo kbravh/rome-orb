@@ -3,7 +3,7 @@ description: >
 parameters:
   app-dir:
     type: string
-    default: ~/project
+    default: .
     description: >
       Path to the directory containing your package.json file. Not needed if
       package.json lives in the root.
@@ -45,5 +45,5 @@ steps:
             pkg-manager: << parameters.pkg-manager >>
             app-dir: << parameters.app-dir >>
   - run:
-      working-directory: << parameters.app-dir >>
-      command: npx rome check << parameters.paths >> << parameters.level >> << parameters.options >>
+      working_directory: << parameters.app-dir >>
+      command: echo $(pwd) && npx rome check --cwd << parameters.app-dir >> << parameters.paths >> << parameters.level >> << parameters.options >>
