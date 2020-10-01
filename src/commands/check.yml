@@ -46,4 +46,4 @@ steps:
             app-dir: << parameters.app-dir >>
   - run:
       working_directory: << parameters.app-dir >>
-      command: echo $(pwd) && npx rome check --cwd << parameters.app-dir >> << parameters.paths >> << parameters.level >> << parameters.options >>
+      command: npx rome check << parameters.paths >> << parameters.level >> << parameters.options >>
