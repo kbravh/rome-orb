@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   rome: kbravh/rome@dev:alpha
   orb-tools: circleci/orb-tools@10.0
+  node: circleci/node@4.0.1
 
 # Pipeline Parameters
 ## These parameters are used internally by orb-tools. Skip to the Jobs section.
