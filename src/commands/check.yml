@@ -13,6 +13,11 @@ parameters:
     default: "npm"
     description: >
       The package manager to use to install the project dependencies.
+  skip-install:
+    type: boolean
+    default: false
+    description: >
+      This will skip the step for installing dependencies.
   paths:
     type: string
     default: ''
@@ -33,9 +38,12 @@ parameters:
       Other options to pass to the Rome check command. https://romefrontend.dev/#global-flags
 steps:
   - checkout
-  - node/install-packages:
-      pkg-manager: << parameters.pkg-manager >>
-      app-dir: << parameters.app-dir >>
+  - unless:
+      condition: << parameters.skip-install >>
+      steps:
+        - node/install-packages:
+            pkg-manager: << parameters.pkg-manager >>
+            app-dir: << parameters.app-dir >>
   - run:
       working-directory: << parameters.app-dir >>
       command: npx rome check << parameters.paths >> << parameters.level >> << parameters.options >>

@@ -26,6 +26,7 @@ jobs:
     executor: node/default
     steps:
       - rome/check:
+          skip-install: true
           app-dir: tests
           level: "--apply"
 
