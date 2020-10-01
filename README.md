@@ -6,7 +6,8 @@ Easily run Rome commands in the CircleCI pipeline.
 
 ## Resources
 
-[CircleCI Orb Registry Page](https://circleci.com/orbs/registry/orb/kbravh/rome-orb) - The official registry page of this orb for all commands described.
+[CircleCI Orb Registry Page](https://circleci.com/orbs/registry/orb/kbravh/rome) - The official registry page of this orb for all commands described.
+
 [CircleCI Orb Docs](https://circleci.com/docs/2.0/orb-intro/#section=configuration) - Docs for using and creating CircleCI Orbs.
 
 ### How to Contribute
