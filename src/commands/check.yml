@@ -37,5 +37,11 @@ steps:
             pkg-manager: << parameters.pkg-manager >>
             app-dir: << parameters.app-dir >>
   - run:
+      name: Set pipefail
+      command: set -o pipefail
+  - run:
       working_directory: << parameters.app-dir >>
-      command: npx rome check << parameters.paths >> << parameters.options >>
+      # We have to pass the rome command to cat for output to be displayed correctly,
+      # as Rome does some pretty printing that doesn't work in our pipeline.
+      # The previous pipefail command ensures our exit code passes through.
+      command: npx rome check << parameters.paths >> << parameters.options >> | cat
