@@ -28,7 +28,6 @@ jobs:
       - rome/check:
           skip-install: true
           app-dir: tests
-          level: "--apply"
 
 
 workflows:

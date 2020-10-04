@@ -23,14 +23,6 @@ parameters:
     default: ''
     description: >
       The files or directories to check, if you don't want to check the entire project.
-  level:
-    type: enum
-    enum: ["", "--apply", "--format-only"]
-    default: ""
-    description: >
-      Level of correction applied by the check command - --apply will apply
-      safe fixes and formatting, while --format-only will only apply formatting.
-      Not passing a level will cause the job to fail upon finding any errors.
   options:
     type: string
     default: ""
@@ -45,5 +37,11 @@ steps:
             pkg-manager: << parameters.pkg-manager >>
             app-dir: << parameters.app-dir >>
   - run:
+      name: Set pipefail
+      command: set -o pipefail
+  - run:
       working_directory: << parameters.app-dir >>
-      command: npx rome check << parameters.paths >> << parameters.level >> << parameters.options >>
+      # We have to pass the rome command to cat for output to be displayed correctly,
+      # as Rome does some pretty printing that doesn't work in our pipeline.
+      # The previous pipefail command ensures our exit code passes through.
+      command: npx rome check << parameters.paths >> << parameters.options >> | cat

@@ -1,5 +1,5 @@
 description: >
-  Linting a yarn project with Rome and applying suggested changes.
+  Linting a yarn project with Rome.
 usage:
   version: 2.1
   orbs:
@@ -10,4 +10,3 @@ usage:
       steps:
         - rome/check:
             pkg-manager: yarn
-            level: --apply
