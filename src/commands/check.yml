@@ -23,14 +23,6 @@ parameters:
     default: ''
     description: >
       The files or directories to check, if you don't want to check the entire project.
-  level:
-    type: enum
-    enum: ["", "--apply", "--format-only"]
-    default: ""
-    description: >
-      Level of correction applied by the check command - --apply will apply
-      safe fixes and formatting, while --format-only will only apply formatting.
-      Not passing a level will cause the job to fail upon finding any errors.
   options:
     type: string
     default: ""
@@ -46,4 +38,4 @@ steps:
             app-dir: << parameters.app-dir >>
   - run:
       working_directory: << parameters.app-dir >>
-      command: npx rome check << parameters.paths >> << parameters.level >> << parameters.options >>
+      command: npx rome check << parameters.paths >> << parameters.options >>
