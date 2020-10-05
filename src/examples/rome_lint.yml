@@ -3,7 +3,8 @@ description: >
 usage:
   version: 2.1
   orbs:
-    rome: kbravh/rome-check@dev:alpha
+    rome: kbravh/rome@dev:alpha
+    node: circleci/node@4.0.1
   jobs:
     lint:
       executor: node/default
