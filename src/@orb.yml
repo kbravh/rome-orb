@@ -5,7 +5,7 @@ description: >
 
 display:
   home_url: https://romefrontend.dev/
-  source_url: https://github.com/kbravh/rome-check
+  source_url: https://github.com/kbravh/rome-orb
 
 orbs:
   node: circleci/node@4.0.1
